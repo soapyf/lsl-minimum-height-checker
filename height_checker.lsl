@@ -1,12 +1,9 @@
 float minHeight = 1.5;
 
-llSetLinkText(integer link, string text, vector color){
-    llSetLinkPrimitiveParamsFast(link,[PRIM_TEXT,text,color,1]);
-}
 default
 {
     state_entry(){
-        llSetLinkText(-1,"",<0,1,0>);
+        llSetText("",<0,1,0>,1);
         llSetTimerEvent(5);
     }
     timer(){
@@ -30,31 +27,14 @@ default
         integer shortNum = llGetListLength(short);
         if(shortNum > 1){
             list text;
-            short = llListSortStrided(short,2,1,1);
+            short = llListSortStrided(short,2,1,0);
             integer x; for(; x<shortNum; x+=2){
                 text += llList2String(short,x) + " - " + llList2String(short,x+1);
             }
-            llSetLinkText(-1,"",<0,1,0>);
-            string n;
-            x = 0; for(; x<llGetListLength(text); x++){
-                n = " \n ";
-                integer i = x+1;
-                while(i--){
-                    n+= " \n ";
-                }
-                if(x==0){llSetLinkText(x+2,llList2String(text,x) + n,<1,0,0>);}
-                else{llSetLinkText(x+1,llList2String(text,x) + n,<1,0,0>);}
-            }
-            llSetLinkText(1,"agents in region below " + llGetSubString((string)minHeight,0,3) + "m limit" + n + " \n \n ",<1,0,0>);
+            llSetText((string)llGetListLength(text) + " agents in region below " + llGetSubString((string)minHeight,0,3) + "m height limit" + " \n \n " + llDumpList2String(text,"\n"),<1,0,0>,1);
         }
         else{
-            llSetLinkText(-1,"",<0,1,0>);
-            llSetLinkText(1,"All agents in region taller than " + llGetSubString((string)minHeight,0,3)+"m",<0,1,0>);
-        }
-    }
-    changed(integer what){
-        if(what & CHANGED_LINK){
-            llResetScript();
+            llSetText("All agents in region taller than " + llGetSubString((string)minHeight,0,3)+"m",<0,1,0>,1);
         }
     }
 }

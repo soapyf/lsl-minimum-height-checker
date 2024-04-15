@@ -16,7 +16,7 @@ default
             if(agent!="" && agent!=NULL_KEY)
             {
                 vector s = llList2Vector(llGetObjectDetails(agent, [OBJECT_SCALE]), 0);
-                float height = s.z + 0.2;
+                float height = s.z + 0.2; // this is done because havok in SL adds 0.1m to every face of a physics shape
                 if(height<minHeight)
                 {
                     short+= [llKey2Name(agent) , llGetSubString((string)height,0,3)];

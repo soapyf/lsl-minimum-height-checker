@@ -7,5 +7,3 @@ Change the minimum height at the top of the script.
 
 
 0.2m is added to the height of agents because the havok implimentation in secondlife adds ~.11m to every side of a physics bounding box
-
-This is easily tested in game

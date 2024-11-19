@@ -20,7 +20,7 @@ default
             key agent = llList2String(agents,index);
             if(agent!="" && agent!=NULL_KEY)
             {
-                vector s = llList2Vector(llGetObjectDetails(agent, [OBJECT_SCALE]), 0);
+                vector s = llGetAgentSize();
 
                 // This is done because havok in SL adds ~0.1m to every side of a physics shape
                 float height = s.z + 0.2; 

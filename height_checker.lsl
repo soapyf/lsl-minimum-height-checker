@@ -23,7 +23,7 @@ default
                 vector s = llGetAgentSize();
 
                 // We need to add 0.2m the the height because as a fix to objects hovering with a gap between them when physical -
-                // sometime in 2010 0.1m was subtracted mathmatically from all sides of objects physics shape.
+                // sometime in 2011 0.1m was subtracted mathmatically from all sides of objects physics shape.
                 // llGetAgentSize and OBJECT_SCALE incorrectly subtract this value from avatars collision shape -
                 // which is not affected by that change thus returns an incorrect value 0.2m shorter than the actual collidable height
 
